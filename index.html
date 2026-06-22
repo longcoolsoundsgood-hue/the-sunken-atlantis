@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Atlantis — Sunken City of Poseidon</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <canvas id="app"></canvas>
+  <div id="fps">-- FPS</div>
+  <div id="ui-hint">
+    scroll · drag to orbit &nbsp;|&nbsp; [C] cinematic flythrough
+  </div>
+  <div id="loading">
+    <div class="loading-inner">
+      <div class="loading-title">ATLANTIS</div>
+      <div class="loading-sub">Sunken City of Poseidon</div>
+      <div class="loading-bar"><div class="loading-fill" id="loadingFill"></div></div>
+      <div class="loading-text" id="loadingText">Generating city…</div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+  <script>
+    // Fade out loading screen once Three.js fires first frame
+    window.__hideLoading = function() {
+      const el = document.getElementById('loading');
+      if (el) { el.style.opacity = '0'; setTimeout(() => el.remove(), 800); }
+    };
+    // Fallback hide after 6 seconds
+    setTimeout(() => window.__hideLoading && window.__hideLoading(), 6000);
+  </script>
+</body>
+</html>
